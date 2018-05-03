@@ -39,7 +39,7 @@ class TestUnit(unittest.TestCase):
 
     def test_ensure_is_alive(self):
         self.soldier._ensure_is_alive()
-        self.soldier.take_damage(100)
+        self.soldier._take_damage(100)
 
         with self.assertRaises(UnitIsDead):
             self.soldier._ensure_is_alive()
@@ -66,14 +66,14 @@ class TestUnit(unittest.TestCase):
             self.soldier.add_hit_points(40)
 
     def test_take_damage(self):
-        self.soldier.take_damage(50)
+        self.soldier._take_damage(50)
         self.assertEqual(self.soldier.hit_points, 50)
 
-        self.soldier.take_damage(-60)
+        self.soldier._take_damage(-60)
         self.assertEqual(self.soldier.hit_points, 0)
 
         with self.assertRaises(UnitIsDead):
-            self.soldier.take_damage(60)
+            self.soldier._take_damage(60)
 
     def test_attack(self):
         self.sergeant.attack(self.soldier)
